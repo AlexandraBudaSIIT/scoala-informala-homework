@@ -1,6 +1,9 @@
 package ro.sci.ale.ian09.validation;
 
 import java.util.Scanner;
+import java.lang.String;
+
+import static java.lang.System.*;
 
 /**
  * Implements an application that asks the user what time it is
@@ -8,7 +11,6 @@ import java.util.Scanner;
  *
  * @author Buda Alexandra
  */
-
 public class DataValidation {
 
     /**
@@ -18,17 +20,21 @@ public class DataValidation {
      * @param args unused.
      */
     public static void main(String[] args) {
-        Scanner read = new Scanner(System.in);
+        Scanner read = new Scanner(in);
 
-        System.out.println("What time is it? ");
+        out.println("What time is it? ");
 
-        System.out.println("Houres: ");
+        out.println("Hours: ");
         int hours = read.nextInt();
 
-        System.out.println("Minutes: ");
+        out.println("Minutes: ");
         int minutes = read.nextInt();
 
-        validateDate(hours, minutes);
+        if (validateDate(hours, minutes)) {
+            out.printf("Time is %02d:%02d now", hours, minutes);
+        } else {
+            out.println("Incorrect time!");
+        }
     }
 
     /**
@@ -37,11 +43,10 @@ public class DataValidation {
      * @param h   the hours
      * @param min the minutes
      */
-    private static void validateDate(int h, int min) {
+    public static boolean validateDate(int h, int min) {
         if ((h < 0 || h > 23) || (min < 0 || min > 59)) {
-            System.out.println("Incorrect time!");
-        } else {
-            System.out.println("Time is " + h + ":" + min + " now");
+            return false;
         }
+        return true;
     }
 }

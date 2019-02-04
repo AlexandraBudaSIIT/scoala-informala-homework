@@ -36,7 +36,7 @@ public class Temperature {
      * @param temp the temperature in Fahrenheit
      * @return the temperature in Celsius
      */
-    private static double fahrenheitToCelsius(double temp) {
+    public static double fahrenheitToCelsius(double temp) {
         return ((temp - 32) * 5 / 9);
 
     }
