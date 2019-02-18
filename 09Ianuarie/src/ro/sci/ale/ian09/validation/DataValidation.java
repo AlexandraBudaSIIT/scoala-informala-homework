@@ -1,5 +1,8 @@
 package ro.sci.ale.ian09.validation;
 
+import org.junit.platform.commons.function.Try;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.lang.String;
 
@@ -14,26 +17,31 @@ import static java.lang.System.*;
 public class DataValidation {
 
     /**
-     * Use the validateDate() method
-     * and output the date with a message
+     * Use the validateDate() method and output the date with a message
+     * Thrown an error message to indicate that the input
+     * does not match the pattern for the expected type
      *
      * @param args unused.
      */
     public static void main(String[] args) {
         Scanner read = new Scanner(in);
 
-        out.println("What time is it? ");
+        try {
+            out.println("What time is it? ");
 
-        out.println("Hours: ");
-        int hours = read.nextInt();
+            out.println("Hours: ");
+            int hours = read.nextInt();
 
-        out.println("Minutes: ");
-        int minutes = read.nextInt();
+            out.println("Minutes: ");
+            int minutes = read.nextInt();
 
-        if (validateDate(hours, minutes)) {
-            out.printf("Time is %02d:%02d now", hours, minutes);
-        } else {
-            out.println("Incorrect time!");
+            if (validateDate(hours, minutes)) {
+                out.printf("Time is %02d:%02d now", hours, minutes);
+            } else {
+                out.println("Incorrect time!");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println(" The input must be an int!");
         }
     }
 
