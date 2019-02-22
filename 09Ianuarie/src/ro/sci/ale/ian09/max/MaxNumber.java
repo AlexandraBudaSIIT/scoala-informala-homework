@@ -27,7 +27,7 @@ public class MaxNumber {
         System.out.println("Enter the third number: ");
         int number3 = read.nextInt();
 
-        int biggest = Math.max(getMax(number1, number2), number3);
+        int biggest = getMax(getMax(number1, number2), number3);
 
         System.out.println("The biggest number is " + biggest);
     }
@@ -39,7 +39,7 @@ public class MaxNumber {
      * @param num2 the second number
      * @return the max number
      */
-    private static int getMax(int num1, int num2) {
+    public static int getMax(int num1, int num2) {
         int max = num1;
         if (num2 > max) {
             max = num2;
